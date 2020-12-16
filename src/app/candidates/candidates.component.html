@@ -1,0 +1,15 @@
+<div *ngFor="let candidate of candidates$ | async">
+  <div>
+    Hello {{ candidate.name }}
+  </div>
+  <br>
+  <div *ngFor="let exp of candidate.experience">
+    <div>Worked as: {{exp.title}} from {{exp.start_date}} to {{exp.end_date}}</div>
+    <div *ngIf="jobsGaps[candidate.name][exp.start_date]">Gap between jobs: {{jobsGaps[candidate.name][exp.start_date]}} days</div>
+  </div>
+  <div *ngIf="!candidate.experience?.length">
+    No work places registered
+  </div>
+  <br>
+  <br>
+</div>
